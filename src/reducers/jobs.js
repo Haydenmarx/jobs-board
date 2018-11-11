@@ -41,9 +41,6 @@ const jobs = (state = testJobs, action) => {
       return [action.payload, ...state];
     case "ApplyTo_Job":
       const updated = state.slice(action.index)[0];
-      console.log(action);
-      // return state;
-      // { ...updated, applicants: [action.payload, ...updated.applicants] },
       return [
         ...state.slice(0, action.index),
         {

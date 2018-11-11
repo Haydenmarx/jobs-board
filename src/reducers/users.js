@@ -27,7 +27,7 @@ const users = (state = testEmployer, action) => {
       newApp[action.id] = true;
       return {
         ...state,
-        applied: { ...state.applied, newApp }
+        applied: { ...state.applied, ...newApp }
       };
     default:
       return state;

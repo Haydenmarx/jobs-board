@@ -70,12 +70,13 @@ class Job extends Component {
         variant="contained"
         color="primary"
         onClick={() => {
-          this.props.onApplyClick(
+          this.props.updateJob(
             userID,
             this.props.user.name,
             this.props.index,
             Date()
           );
+          this.props.updateUser(jobID);
         }}
       >
         Apply
@@ -158,13 +159,18 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onApplyClick: (id, name, index, date) =>
+    updateJob: (id, name, index, date) =>
       dispatch({
         type: "ApplyTo_Job",
         id,
         name,
         index,
         date
+      }),
+    updateUser: id =>
+      dispatch({
+        type: "UpdateApplied_USER",
+        id
       })
   };
 };
