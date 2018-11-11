@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const Jobs = props => {
   return (
-    <ul>
+    <ul style={{ paddingLeft: "0px" }}>
       {props.jobs.map((job, i) => {
         return (
           <Job

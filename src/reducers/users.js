@@ -11,7 +11,7 @@ const testApplicant = {
   applied: { 0: true, 5: true, 8: true }
 };
 
-const users = (state = testEmployer, action) => {
+const users = (state = testApplicant, action) => {
   switch (action.type) {
     case "LogIn_USER":
       return {

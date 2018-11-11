@@ -38,7 +38,18 @@ const testJobs = [
 const jobs = (state = testJobs, action) => {
   switch (action.type) {
     case "Add_Job":
-      return [action.payload, ...state];
+      const newJob = {};
+      newJob.id = state.length + 1;
+      newJob.title = action.title;
+      newJob.category = action.category;
+      newJob.budget = action.budget;
+      newJob.description = action.description;
+      newJob.company = action.company;
+      newJob.posterID = action.posterID;
+      newJob.applicants = [];
+      // console.log(state, newJob);
+      // return state;
+      return [newJob, ...state];
     case "ApplyTo_Job":
       const updated = state.slice(action.index)[0];
       return [

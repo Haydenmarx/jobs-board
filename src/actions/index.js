@@ -24,14 +24,14 @@ export const JobApply = (id, name, index, date) => ({
 });
 
 export const JobAdd = (
-  id,
   title,
   category,
   budget,
   description,
   company,
   posterID,
-  applicants = []
+  applicants,
+  id
 ) => ({
   case: "Add_Job",
   id,

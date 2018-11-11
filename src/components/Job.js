@@ -142,7 +142,7 @@ class Job extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Description:</Typography>
+            {/* <Typography paragraph>Description:</Typography> */}
             <Typography paragraph>{this.props.description}</Typography>
           </CardContent>
         </Collapse>

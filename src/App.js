@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import fire from "./config";
 import Jobs from "./components/Jobs";
+import NewJob from "./components/NewJob";
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends Component {
           ))}
         </ul>
         */}
+        <NewJob />
         <Jobs />
         {/*</form>*/}
       </div>
