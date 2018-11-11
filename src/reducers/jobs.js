@@ -7,7 +7,7 @@ const testJobs = [
     description: "Gain Access to Computers",
     company: "Fake Company",
     posterID: 3,
-    applicants: [{ id: 0, name: "hayden", date: "XXXXX" }]
+    applicants: [{ id: 0, name: "hayden", date: Date() }]
   },
   {
     id: 1,
@@ -28,9 +28,9 @@ const testJobs = [
     company: "Fake Company3",
     posterID: 1,
     applicants: [
-      { id: 4, name: "hayden3", date: "XXXXX" },
-      { id: 1, name: "hayden2", date: "XXXXX" },
-      { id: 2, name: "hayden3", date: "XXXXX" }
+      { id: 4, name: "hayden3", date: Date() },
+      { id: 1, name: "hayden2", date: Date() },
+      { id: 2, name: "hayden3", date: Date() }
     ]
   }
 ];
@@ -47,8 +47,6 @@ const jobs = (state = testJobs, action) => {
       newJob.company = action.company;
       newJob.posterID = action.posterID;
       newJob.applicants = [];
-      // console.log(state, newJob);
-      // return state;
       return [newJob, ...state];
     case "ApplyTo_Job":
       const updated = state.slice(action.index)[0];

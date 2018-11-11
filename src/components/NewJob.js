@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   FormGroup,
   Input,
-  FormControlLabel,
+  InputAdornment,
   TextField,
   Button,
   Card
@@ -54,6 +54,8 @@ class NewJob extends Component {
             id="newJobBudget"
             value={this.state.newJobBudget}
             onChange={this.updateState}
+            type="number"
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
         </FormGroup>
         <FormGroup style={styles.formGroup}>

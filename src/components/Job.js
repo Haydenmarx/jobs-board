@@ -11,6 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { connect } from "react-redux";
+import CurrencyFormat from "react-currency-format";
+import Moment from "moment";
 
 const classes = {
   card: "card",
@@ -34,7 +36,6 @@ class Job extends Component {
     this.setState({ applicants: !this.state.applicants });
   };
   renderButton = (applied, jobID, posterID, userID) => {
-    console.log(this.props);
     if (applied[jobID])
       return (
         <Button style={{ minWidth: "150px" }} variant="contained" disabled>
@@ -98,6 +99,15 @@ class Job extends Component {
         <CardContent>
           {!this.state.applicants && (
             <Typography component="p">
+              <span>Salary: </span>
+              <CurrencyFormat
+                value={this.props.budget}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"$"}
+              />
+              <br />
+              <span>Description: </span>
               {this.props.description.slice(0, 34)}
               {this.props.description.length > 34 && <span>...</span>}
             </Typography>
@@ -112,7 +122,7 @@ class Job extends Component {
                   <li key={`job${this.props.jobID}-applicant${applicant.id}`}>
                     <span>{applicant.name}</span>
                     <span>: </span>
-                    <span>{applicant.date}</span>
+                    <span>{Moment(applicant.date).fromNow()}</span>
                   </li>
                 );
               })}
