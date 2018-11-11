@@ -20,8 +20,7 @@ class NewJob extends Component {
       newJobTitle: "",
       newJobCategory: "",
       newJobBudget: "",
-      newJobDescription: "",
-      newJobCompany: ""
+      newJobDescription: ""
     };
   }
   updateState = e => {
@@ -66,14 +65,6 @@ class NewJob extends Component {
             onChange={this.updateState}
           />
         </FormGroup>
-        <FormGroup style={styles.formGroup}>
-          <label>Company Name:</label>
-          <Input
-            id="newJobCompany"
-            value={this.state.newJobCompany}
-            onChange={this.updateState}
-          />
-        </FormGroup>
         <Button
           variant="contained"
           color="primary"
@@ -84,7 +75,7 @@ class NewJob extends Component {
               this.state.newJobCategory,
               this.state.newJobBudget,
               this.state.newJobDescription,
-              this.state.newJobCompany,
+              this.props.user.company,
               this.props.user.id
             );
           }}
