@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import fire from "./config";
 import Jobs from "./components/Jobs";
 import NewJob from "./components/NewJob";
+import { connect } from "react-redux";
 
 class App extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class App extends Component {
           ))}
         </ul>
         */}
-        <NewJob />
+        {this.props.user.company !== null && <NewJob />}
         <Jobs />
         {/*</form>*/}
       </div>
@@ -53,4 +54,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = function(state) {
+  return {
+    user: state.users
+  };
+};
+
+export default connect(mapStateToProps)(App);
