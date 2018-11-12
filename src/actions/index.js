@@ -23,10 +23,6 @@ export const JobApply = (id, name, index, date) => ({
   date
 });
 
-export const AsyncHenlo = () => ({
-  type: "henlo_Async"
-});
-
 export const JobAdd = (
   title,
   category,

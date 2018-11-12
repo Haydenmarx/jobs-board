@@ -12,7 +12,6 @@ class GithubJobs extends Component {
     };
   }
   componentDidMount() {
-    this.setState({ jobs: ["test", "test2"] });
     const api = "https://jobs.github.com/positions.json?location=sf";
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -48,7 +47,11 @@ class GithubJobs extends Component {
         {this.state.jobs.slice(this.state.first, this.state.last).map(job => {
           return (
             <li key={job.id} style={{ paddingLeft: "5px" }}>
-              <a href={job.url} style={{ wordBreak: "break-word" }}>
+              <a
+                href={job.url}
+                target="_blank"
+                style={{ wordBreak: "break-word" }}
+              >
                 {job.type} {job.title}
               </a>
               <p>Location: {job.location}</p>

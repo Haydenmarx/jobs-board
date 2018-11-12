@@ -31,7 +31,6 @@ class Job extends Component {
   }
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
-    this.props.AsyncHenlo();
   };
   toggleApplicants = () => {
     this.setState({ applicants: !this.state.applicants });
@@ -87,7 +86,7 @@ class Job extends Component {
   };
   render() {
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} style={{ margin: "10px 0px" }}>
         <CardHeader
           avatar={
             <Avatar aria-label="Job" className={classes.avatar}>
@@ -182,10 +181,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: "UpdateApplied_USER",
         id
-      }),
-    AsyncHenlo: () => {
-      dispatch({ type: "henlo_Async" });
-    }
+      })
   };
 };
 

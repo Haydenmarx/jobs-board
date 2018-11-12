@@ -1,15 +1,34 @@
-import { delay } from "redux-saga";
-import { put, takeEvery, all } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import db from "./config";
 
-export function* helloSaga() {
-  yield delay(1000);
-  yield put({ type: "henlo_Async" });
+// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+//db.collection("users").doc("m3a0oAoUkq2tWVRnOST9");
+function* fetchUser(action) {
+  // try {
+  //   const user = yield call(Api.fetchUser, action.payload.userId);
+  //   yield put({ type: "USER_FETCH_SUCCEEDED", user: user });
+  // } catch (e) {
+  //   yield put({ type: "USER_FETCH_FAILED", message: e.message });
+  // }
 }
 
-export function* watchhelloSaga() {
-  yield takeEvery("AsyncHenlo", helloSaga);
+/*
+  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
+  Allows concurrent fetches of user.
+*/
+function* mySaga() {
+  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
 }
 
-export default function* rootSaga() {
-  yield all([helloSaga(), watchhelloSaga()]);
-}
+/*
+  Alternatively you may use takeLatest.
+
+  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
+  dispatched while a fetch is already pending, that pending fetch is cancelled
+  and only the latest one will be run.
+*/
+// function* mySaga() {
+//   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+// }
+
+export default mySaga;
