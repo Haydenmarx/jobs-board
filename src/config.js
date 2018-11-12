@@ -6,9 +6,12 @@ const config = {
   databaseURL: "https://job-board-d03be.firebaseio.com",
   projectId: "job-board-d03be",
   storageBucket: "",
-  messagingSenderId: "437053531291"
+  messagingSenderId: "437053531291",
+  timestampsInSnapshots: true
 };
 
-const fire = firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-export default fire;
+const db = firebase.firestore();
+
+export default db;

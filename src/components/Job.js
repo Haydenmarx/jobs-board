@@ -31,6 +31,7 @@ class Job extends Component {
   }
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
+    this.props.AsyncHenlo();
   };
   toggleApplicants = () => {
     this.setState({ applicants: !this.state.applicants });
@@ -181,7 +182,10 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: "UpdateApplied_USER",
         id
-      })
+      }),
+    AsyncHenlo: () => {
+      dispatch({ type: "henlo_Async" });
+    }
   };
 };
 
