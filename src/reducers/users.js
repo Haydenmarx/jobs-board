@@ -1,13 +1,13 @@
-const testEmployer = {
+let testEmployer = {
   id: 0,
   name: "Hayden",
   company: "Microsoft",
   applied: {}
 };
-const testApplicant = {
+let testApplicant = {
   id: 1,
   name: "Not Hayden",
-  company: null,
+  company: "false",
   applied: { 0: true, 5: true, 8: true }
 };
 
@@ -29,6 +29,13 @@ const users = (state = testEmployer, action) => {
         ...state,
         applied: { ...state.applied, ...newApp }
       };
+    case "Demo":
+      if (action.user.company === "false") {
+        testApplicant = action.user;
+        return testEmployer;
+      }
+      testEmployer = action.user;
+      return testApplicant;
     default:
       return state;
   }

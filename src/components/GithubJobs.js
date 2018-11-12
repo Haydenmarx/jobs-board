@@ -12,8 +12,9 @@ class GithubJobs extends Component {
     };
   }
   componentDidMount() {
+    // No need to call it a bunch while testing
+    console.log("calling");
     const api = "https://jobs.github.com/positions.json?location=sf";
-
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     fetch(proxyurl + api)
       .then(response => response.text())
@@ -50,6 +51,7 @@ class GithubJobs extends Component {
               <a
                 href={job.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ wordBreak: "break-word" }}
               >
                 {job.type} {job.title}

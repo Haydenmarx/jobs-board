@@ -1,34 +1,14 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import db from "./config";
+import { JobsAdd } from "./actions";
+import api from "./api";
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-//db.collection("users").doc("m3a0oAoUkq2tWVRnOST9");
-function* fetchUser(action) {
-  // try {
-  //   const user = yield call(Api.fetchUser, action.payload.userId);
-  //   yield put({ type: "USER_FETCH_SUCCEEDED", user: user });
-  // } catch (e) {
-  //   yield put({ type: "USER_FETCH_FAILED", message: e.message });
-  // }
+//watcher saga
+export function* watchGetAllJobs() {
+  yield takeEvery("Get_Multiple_Jobs", getAllJobs);
 }
 
-/*
-  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-  Allows concurrent fetches of user.
-*/
-function* mySaga() {
-  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+//worker
+export function* getAllJobs() {
+  const jobs = yield call(api.getAllJobs);
+  yield put(JobsAdd([]));
 }
-
-/*
-  Alternatively you may use takeLatest.
-
-  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-  dispatched while a fetch is already pending, that pending fetch is cancelled
-  and only the latest one will be run.
-*/
-// function* mySaga() {
-//   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
-// }
-
-export default mySaga;

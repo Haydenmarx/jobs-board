@@ -28,6 +28,12 @@ class NewJob extends Component {
     updated[e.target.id] = e.target.value;
     this.setState(updated);
   };
+  clearForm = () => {
+    this.updateState({ target: { id: "newJobTitle", value: "" } });
+    this.updateState({ target: { id: "newJobCategory", value: "" } });
+    this.updateState({ target: { id: "newJobBudget", value: "" } });
+    this.updateState({ target: { id: "newJobDescription", value: "" } });
+  };
   render() {
     return (
       <Card>
@@ -76,8 +82,11 @@ class NewJob extends Component {
               this.state.newJobBudget,
               this.state.newJobDescription,
               this.props.user.company,
-              this.props.user.id
+              this.props.user.id,
+              {},
+              this.props.jobs.length + 1
             );
+            this.clearForm();
           }}
         >
           Submit New Job!
@@ -89,7 +98,8 @@ class NewJob extends Component {
 
 const mapStateToProps = function(state) {
   return {
-    user: state.users
+    user: state.users,
+    jobs: state.jobs
   };
 };
 

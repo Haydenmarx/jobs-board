@@ -33,7 +33,7 @@ export const JobAdd = (
   applicants,
   id
 ) => ({
-  case: "Add_Job",
+  type: "Add_Job",
   id,
   title,
   category,
@@ -44,18 +44,17 @@ export const JobAdd = (
   applicants
 });
 
-export const setVisibilityFilter = filter => ({
-  type: "SET_VISIBILITY_FILTER",
-  filter
+export const JobsGet = jobs => ({
+  type: "Get_Multiple_Jobs",
+  jobs: jobs
 });
 
-export const toggleTodo = id => ({
-  type: "TOGGLE_TODO",
-  id
+export const JobsAdd = jobs => ({
+  type: "Add_Multiple_Jobs",
+  jobs: jobs
 });
 
-export const VisibilityFilters = {
-  SHOW_ALL: "SHOW_ALL",
-  SHOW_COMPLETED: "SHOW_COMPLETED",
-  SHOW_ACTIVE: "SHOW_ACTIVE"
-};
+export const Demo = user => ({
+  type: "Demo",
+  user
+});

@@ -7,12 +7,12 @@ import rootReducer from "./reducers";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import mySaga from "./sagas";
+import { watchGetAllJobs } from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(mySaga);
+// sagaMiddleware.run(watchGetAllJobs);
 
 render(
   <Provider store={store}>
